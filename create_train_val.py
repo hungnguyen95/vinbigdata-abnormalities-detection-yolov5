@@ -19,6 +19,7 @@ if __name__ == '__main__':
     # Read training CSV file
     train_df = pd.read_csv(f'{args.input}/train.csv')
     train_df['image_path'] = f'{args.input}/train/' + train_df.image_id + '.png'
+    train_df = train_df[train_df.class_id!=14].reset_index(drop = True)
 
     # Group to fold based on ratio
     # e.g 80% training and 20% testing, ratio = 0.8
